@@ -103,6 +103,7 @@ class WCBS_Controller {
         if ($expiry_date) {
           $coupon->set_date_expires(strtotime($expiry_date));
         }
+        $coupon->set_product_ids([$product_id]);
         $coupon->save(); 
 
         }
