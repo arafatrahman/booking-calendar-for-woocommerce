@@ -90,6 +90,8 @@ class WCBS_Controller {
         $coupon_amount = 50; 
         $usage_limit = $promo_code_usage_limit; // Single-use by default
         $expiry_duration = $expiry_date; // Fetch expiry duration set for the product
+
+        $applied_coupons = $order->get_coupon_codes();
     
         $coupon = new WC_Coupon();
         $coupon->set_code($generated_coupon_code);
@@ -101,6 +103,8 @@ class WCBS_Controller {
           $coupon->set_date_expires(strtotime($expiry_date));
         }
         $coupon->save(); 
+
+        }
         
         // If a booking date exists, display it in the email
         if ($booking_date) {
