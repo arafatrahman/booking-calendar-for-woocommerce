@@ -92,7 +92,8 @@ class WCBS_Controller {
         $expiry_duration = $expiry_date; // Fetch expiry duration set for the product
 
         $applied_coupons = $order->get_coupon_codes();
-    
+        // If no promo code is applied, create one
+        if (empty($applied_coupons)) {
         $coupon = new WC_Coupon();
         $coupon->set_code($generated_coupon_code);
         $coupon->set_discount_type($discount_type);
